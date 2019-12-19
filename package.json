@@ -1,0 +1,62 @@
+{
+  "name": "react-native-styles",
+  "title": "React Native Styles",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
+    "prettier": "prettier \"**/*.{json,md,js,ts,tsx}\" --list-different",
+    "prettier:fix": "yarn prettier --write",
+    "build": "rollup -c",
+    "start": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wm-madfaa-dev/react-native-styles.git",
+    "baseUrl": "https://github.com/wm-madfaa-dev/react-native-styles"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "Wasim Almadfaa",
+    "email": "wm.madfaa@gmail.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": "^16.8.1",
+    "react-native": ">=0.59.0-rc.0 <1.0.x"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/runtime": "^7.7.7",
+    "@types/color": "^3.0.0",
+    "@types/deepmerge": "^2.2.0",
+    "@types/react": "^16.9.16",
+    "@types/react-native": "^0.60.25",
+    "@wm-madfaa-dev/eslint-config": "wm-madfaa-dev/eslint-config#v0.1.0",
+    "cross-env": "^6.0.3",
+    "react": "^16.8.3",
+    "react-native": "^0.59.10",
+    "rollup": "^1.27.13",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "rollup-plugin-url": "^3.0.1",
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "color": "^3.1.2",
+    "deepmerge": "^4.2.2"
+  }
+}
