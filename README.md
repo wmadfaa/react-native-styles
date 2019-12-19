@@ -9,8 +9,9 @@
 `$ react-native link react-native-styles`
 
 ## Usage
+
 ```javascript
-import Styles from 'react-native-styles';
+import Styles from "react-native-styles";
 
 // TODO: What to do with the module?
 Styles;

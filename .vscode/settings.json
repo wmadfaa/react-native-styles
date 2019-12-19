@@ -19,9 +19,7 @@
       "autoFix": true
     }
   ],
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
   "search.exclude": {
     "**/public/**": true,
     "**/.cache/**": true

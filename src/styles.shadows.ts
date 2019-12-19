@@ -1,11 +1,11 @@
-import { ViewStyle } from 'react-native';
+import { ViewStyle } from "react-native";
 
 export interface Shadow {
-  shadowColor: ViewStyle['shadowColor'];
-  shadowOffset: ViewStyle['shadowOffset'];
-  shadowOpacity: ViewStyle['shadowOpacity'];
-  shadowRadius: ViewStyle['shadowRadius'];
-  elevation: ViewStyle['elevation'];
+  shadowColor: ViewStyle["shadowColor"];
+  shadowOffset: ViewStyle["shadowOffset"];
+  shadowOpacity: ViewStyle["shadowOpacity"];
+  shadowRadius: ViewStyle["shadowRadius"];
+  elevation: ViewStyle["elevation"];
 }
 
 export type Shadows = [
@@ -32,24 +32,28 @@ export type Shadows = [
   Shadow,
   Shadow,
   Shadow,
-  Shadow,
+  Shadow
 ];
 
 function interpolate(i: number, a: number, b: number, a2: number, b2: number) {
   return ((i - a) * (b2 - a2)) / (b - a) + a2;
 }
 
-function createShadow(depth: number, blur: number, color: Shadow['shadowColor'] = '#000000'): Shadow {
+function createShadow(
+  depth: number,
+  blur: number,
+  color: Shadow["shadowColor"] = "#000000"
+): Shadow {
   return {
     shadowColor: color,
     shadowOffset: {
       width: 0,
-      height: depth + 1 === 1 ? 1 : Math.floor((depth + 1) * 0.5),
+      height: depth + 1 === 1 ? 1 : Math.floor((depth + 1) * 0.5)
     },
     shadowOpacity: interpolate(depth, 1, 24, 0.2, 0.6),
     shadowRadius: interpolate(blur, 1, 38, 1, 16),
 
-    elevation: depth + 1,
+    elevation: depth + 1
   };
 }
 
@@ -77,7 +81,7 @@ const shadows: Shadows = [
   createShadow(20, 33),
   createShadow(21, 35),
   createShadow(22, 36),
-  createShadow(23, 38),
+  createShadow(23, 38)
 ];
 
 export default shadows;

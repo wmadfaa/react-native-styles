@@ -19,5 +19,5 @@
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src","declarations.d.ts"],
+  "include": ["src", "declarations.d.ts"]
 }

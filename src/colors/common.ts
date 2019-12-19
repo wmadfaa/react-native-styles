@@ -1,8 +1,8 @@
-import { ICommonColors } from './types';
+import { ICommonColors } from "./types";
 
 const common: ICommonColors = <const>{
-  black: '#000',
-  white: '#fff',
+  black: "#000",
+  white: "#fff"
 };
 
 export default common;
