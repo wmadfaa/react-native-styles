@@ -1,3 +1,3 @@
-import { IColor } from "./types";
-declare const deepOrange: IColor;
+import { Color } from "./types";
+declare const deepOrange: Color;
 export default deepOrange;

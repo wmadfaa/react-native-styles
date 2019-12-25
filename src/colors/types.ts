@@ -1,9 +1,9 @@
-export interface ICommonColors {
+export interface CommonColors {
   black: string;
   white: string;
 }
 
-export interface IColor {
+export interface Color {
   50: string;
   100: string;
   200: string;

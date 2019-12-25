@@ -1,6 +1,6 @@
-import { IColor } from "./types";
+import { Color } from "./types";
 
-const lightBlue: IColor = <const>{
+const lightBlue: Color = <const>{
   50: "#e1f5fe",
   100: "#b3e5fc",
   200: "#81d4fa",

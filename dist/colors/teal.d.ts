@@ -1,3 +1,3 @@
-import { IColor } from "./types";
-declare const teal: IColor;
+import { Color } from "./types";
+declare const teal: Color;
 export default teal;

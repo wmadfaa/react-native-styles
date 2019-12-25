@@ -1,3 +1,3 @@
-import { IColor } from "./types";
-declare const indigo: IColor;
+import { Color } from "./types";
+declare const indigo: Color;
 export default indigo;

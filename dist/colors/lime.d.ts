@@ -1,3 +1,3 @@
-import { IColor } from "./types";
-declare const lime: IColor;
+import { Color } from "./types";
+declare const lime: Color;
 export default lime;

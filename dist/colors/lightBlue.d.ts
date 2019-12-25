@@ -1,3 +1,3 @@
-import { IColor } from "./types";
-declare const lightBlue: IColor;
+import { Color } from "./types";
+declare const lightBlue: Color;
 export default lightBlue;

@@ -1,6 +1,6 @@
-import { IColor } from "./types";
+import { Color } from "./types";
 
-const lime: IColor = <const>{
+const lime: Color = <const>{
   50: "#f9fbe7",
   100: "#f0f4c3",
   200: "#e6ee9c",

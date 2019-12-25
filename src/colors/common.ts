@@ -1,6 +1,6 @@
-import { ICommonColors } from "./types";
+import { CommonColors } from "./types";
 
-const common: ICommonColors = <const>{
+const common: CommonColors = <const>{
   black: "#000",
   white: "#fff"
 };

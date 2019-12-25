@@ -3,21 +3,23 @@ import deepmerge from "deepmerge";
 import {
   common,
   grey,
-  ICommonColors,
-  IColor,
+  CommonColors,
+  Color,
   indigo,
   pink,
   red
-} from "./colors";
-import { PartialExcept, RecursivePartial } from "./utils";
+} from "../colors";
+import { PartialExcept, RecursivePartial } from "../utils";
 
-export interface PaletteText {
-  primary: string;
-  secondary: string;
-  disabled: string;
-  hint: string;
-  icon?: string;
-}
+export type PaletteText = Record<
+  "light" | "dark",
+  {
+    primary: string;
+    secondary: string;
+    disabled: string;
+    hint: string;
+  }
+>;
 
 export type PaletteDivider = string;
 
@@ -28,6 +30,23 @@ export interface PaletteAction {
   selected: string;
   disabled: string;
   disabledBackground: string;
+}
+
+export interface Overlay {
+  hover: string;
+  focus: string;
+  pressed: string;
+}
+
+export interface Surface {
+  ui: string;
+  card: string;
+  dialogs: string;
+  drawers: string;
+  sheets: string;
+  sideSheets: string;
+  menu: string;
+  snackbar: string;
 }
 
 export interface PaletteBackground {
@@ -41,51 +60,80 @@ export interface PaletteColor {
   light: string;
   main: string;
   dark: string;
+  palette?: Color;
   contrastText: string;
 }
 
-export type PaletteColorExceptMain = PartialExcept<PaletteColor, "main">;
+export type PaletteColorExceptMain = PartialExcept<
+  PaletteColor,
+  "main" | "palette"
+>;
 
 export interface Palette {
-  common: ICommonColors;
+  common: CommonColors;
   type: PaletteType;
   contrastThreshold: number;
   tonalOffset: number;
   primary: PaletteColor;
   secondary: PaletteColor;
   error: PaletteColor;
-  grey: IColor;
+  grey: Color;
   text: PaletteText;
   divider: PaletteDivider;
   action: PaletteAction;
+  overlay: Overlay;
+  surface: Surface;
   background: PaletteBackground;
   getContrastText: (background: string) => string;
   augmentColor: {
-    <K extends keyof Partial<IColor>, T extends Partial<IColor>>(
+    <K extends keyof Partial<Color>, T extends Partial<Color>>(
       color: PaletteColorExceptMain | T
     ): PaletteColor;
-    <K extends keyof Partial<IColor>, T extends Partial<IColor>>(
+    <K extends keyof Partial<Color>, T extends Partial<Color>>(
       color: T,
       mainShade?: K,
-      lightShade?: keyof IColor,
-      darkShade?: keyof IColor
+      lightShade?: keyof Color,
+      darkShade?: keyof Color
     ): PaletteColor;
   };
 }
 
 type PaletteTypeObject = Pick<
   Palette,
-  "action" | "background" | "divider" | "text"
+  "action" | "background" | "overlay" | "surface" | "divider" | "text"
 >;
 
 export const light: PaletteTypeObject = {
   text: {
-    primary: "rgba(0, 0, 0, 0.87)",
-    secondary: "rgba(0, 0, 0, 0.54)",
-    disabled: "rgba(0, 0, 0, 0.38)",
-    hint: "rgba(0, 0, 0, 0.38)"
+    dark: {
+      primary: "rgba(0, 0, 0, 0.87)",
+      secondary: "rgba(0, 0, 0, 0.54)",
+      disabled: "rgba(0, 0, 0, 0.38)",
+      hint: "rgba(0, 0, 0, 0.38)"
+    },
+    light: {
+      primary: common.white,
+      secondary: "rgba(255, 255, 255, 0.7)",
+      disabled: "rgba(255, 255, 255, 0.5)",
+      hint: "rgba(255, 255, 255, 0.5)"
+    }
   },
   divider: "rgba(0, 0, 0, 0.12)",
+  overlay: {
+    hover: "rgba(0, 0, 0, 0.08)",
+    focus: "rgba(0, 0, 0, 0.12)",
+    pressed: "rgba(0, 0, 0, 0.16)"
+  },
+  surface: {
+    ui: common.white,
+    card: grey[50],
+    dialogs: common.white,
+    drawers: common.white,
+    sheets: grey[50],
+    sideSheets: common.white,
+    menu: grey[50],
+    snackbar: grey[900]
+  },
   background: {
     paper: common.white,
     default: grey[50]
@@ -102,16 +150,38 @@ export const light: PaletteTypeObject = {
 
 export const dark: PaletteTypeObject = {
   text: {
-    primary: common.white,
-    secondary: "rgba(255, 255, 255, 0.7)",
-    disabled: "rgba(255, 255, 255, 0.5)",
-    hint: "rgba(255, 255, 255, 0.5)",
-    icon: "rgba(255, 255, 255, 0.5)"
+    dark: {
+      primary: "rgba(0, 0, 0, 0.87)",
+      secondary: "rgba(0, 0, 0, 0.54)",
+      disabled: "rgba(0, 0, 0, 0.38)",
+      hint: "rgba(0, 0, 0, 0.38)"
+    },
+    light: {
+      primary: common.white,
+      secondary: "rgba(255, 255, 255, 0.7)",
+      disabled: "rgba(255, 255, 255, 0.5)",
+      hint: "rgba(255, 255, 255, 0.5)"
+    }
   },
   divider: "rgba(255, 255, 255, 0.12)",
+  overlay: {
+    hover: "rgba(255, 255, 255, 0.32)",
+    focus: "rgba(255, 255, 255, 0.12)",
+    pressed: "rgba(255, 255, 255, 0.8)"
+  },
+  surface: {
+    ui: grey[800],
+    card: grey.A400,
+    dialogs: grey[800],
+    drawers: grey[800],
+    sheets: grey.A400,
+    sideSheets: grey[800],
+    menu: grey.A400,
+    snackbar: grey[900]
+  },
   background: {
     paper: grey[800],
-    default: "#303030"
+    default: grey.A400
   },
   action: {
     active: common.white,
@@ -123,7 +193,7 @@ export const dark: PaletteTypeObject = {
   }
 };
 
-export type PaletteColorOptions = PaletteColorExceptMain | Partial<IColor>;
+export type PaletteColorOptions = PaletteColorExceptMain | Partial<Color>;
 
 export interface PaletteOptions
   extends RecursivePartial<Omit<Palette, "primary" | "secondary" | "error">> {
@@ -132,10 +202,10 @@ export interface PaletteOptions
   error?: PaletteColorOptions;
 }
 
-function getLightAndDark<T extends Partial<IColor>>(
+function getLightAndDark<T extends Partial<Color>>(
   intent: PaletteColorExceptMain | T,
   main: string,
-  shade: [keyof IColor, keyof IColor],
+  shade: [keyof Color, keyof Color],
   tonalOffset: number
 ): T & { light: string; dark: string } {
   const lightColor = intent.hasOwnProperty("light")
@@ -164,17 +234,20 @@ function createPalette(options: PaletteOptions): Palette {
     primary = {
       light: indigo[300],
       main: indigo[500],
-      dark: indigo[700]
+      dark: indigo[700],
+      palette: indigo
     },
     secondary = {
       light: pink.A200,
       main: pink.A400,
-      dark: pink.A700
+      dark: pink.A700,
+      palette: pink
     },
     error = {
       light: red[300],
       main: red[500],
-      dark: red[700]
+      dark: red[700],
+      palette: red
     },
     type = "light",
     contrastThreshold = 3,
@@ -185,33 +258,33 @@ function createPalette(options: PaletteOptions): Palette {
   const getContrastText = (background: string): string => {
     const color = ColorManipulator;
 
-    return color(background).contrast(color(dark.text.primary)) >=
+    return color(background).contrast(color(light.text.dark.primary)) >=
       contrastThreshold
-      ? dark.text.primary
-      : light.text.primary;
+      ? light.text.dark.primary
+      : light.text.light.primary;
   };
 
   function augmentColor<
-    K extends keyof Partial<IColor>,
-    T extends Partial<IColor>
+    K extends keyof Partial<Color>,
+    T extends Partial<Color>
   >(color: PaletteColorExceptMain | T): PaletteColor;
   function augmentColor<
-    K extends keyof Partial<IColor>,
-    T extends Partial<IColor>
+    K extends keyof Partial<Color>,
+    T extends Partial<Color>
   >(
     color: PaletteColorExceptMain | T,
     mainShade?: K,
-    lightShade?: keyof IColor,
-    darkShade?: keyof IColor
+    lightShade?: keyof Color,
+    darkShade?: keyof Color
   ): PaletteColor;
   function augmentColor<
-    K extends keyof Partial<IColor>,
-    T extends Partial<IColor>
+    K extends keyof Partial<Color>,
+    T extends Partial<Color>
   >(
     color: PaletteColorExceptMain | T,
     mainShade?: K,
-    lightShade?: keyof IColor,
-    darkShade?: keyof IColor
+    lightShade?: keyof Color,
+    darkShade?: keyof Color
   ): PaletteColor {
     const MainShade = mainShade || (500 as K);
     const LightShade = lightShade || 300;
@@ -220,6 +293,10 @@ function createPalette(options: PaletteOptions): Palette {
     const main = color.hasOwnProperty("main")
       ? (color as PaletteColorExceptMain).main
       : ((color as T)[MainShade] as string);
+
+    const palette = color.hasOwnProperty("palette")
+      ? (color as PaletteColorExceptMain).palette
+      : undefined;
 
     const { light: lightColor, dark: darkColor } = getLightAndDark(
       color,
@@ -236,7 +313,8 @@ function createPalette(options: PaletteOptions): Palette {
       main,
       light: lightColor,
       dark: darkColor,
-      contrastText
+      contrastText,
+      palette
     };
   }
 

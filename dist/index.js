@@ -9,6 +9,358 @@ function _interopDefault(ex) {
 var React = _interopDefault(require("react"));
 var reactNative = require("react-native");
 
+var common = {
+  black: "#000",
+  white: "#fff"
+};
+
+var red = {
+  50: "#ffebee",
+  100: "#ffcdd2",
+  200: "#ef9a9a",
+  300: "#e57373",
+  400: "#ef5350",
+  500: "#f44336",
+  600: "#e53935",
+  700: "#d32f2f",
+  800: "#c62828",
+  900: "#b71c1c",
+  A100: "#ff8a80",
+  A200: "#ff5252",
+  A400: "#ff1744",
+  A700: "#d50000"
+};
+
+var pink = {
+  50: "#fce4ec",
+  100: "#f8bbd0",
+  200: "#f48fb1",
+  300: "#f06292",
+  400: "#ec407a",
+  500: "#e91e63",
+  600: "#d81b60",
+  700: "#c2185b",
+  800: "#ad1457",
+  900: "#880e4f",
+  A100: "#ff80ab",
+  A200: "#ff4081",
+  A400: "#f50057",
+  A700: "#c51162"
+};
+
+var purple = {
+  50: "#f3e5f5",
+  100: "#e1bee7",
+  200: "#ce93d8",
+  300: "#ba68c8",
+  400: "#ab47bc",
+  500: "#9c27b0",
+  600: "#8e24aa",
+  700: "#7b1fa2",
+  800: "#6a1b9a",
+  900: "#4a148c",
+  A100: "#ea80fc",
+  A200: "#e040fb",
+  A400: "#d500f9",
+  A700: "#aa00ff"
+};
+
+var deepPurple = {
+  50: "#ede7f6",
+  100: "#d1c4e9",
+  200: "#b39ddb",
+  300: "#9575cd",
+  400: "#7e57c2",
+  500: "#673ab7",
+  600: "#5e35b1",
+  700: "#512da8",
+  800: "#4527a0",
+  900: "#311b92",
+  A100: "#b388ff",
+  A200: "#7c4dff",
+  A400: "#651fff",
+  A700: "#6200ea"
+};
+
+var indigo = {
+  50: "#e8eaf6",
+  100: "#c5cae9",
+  200: "#9fa8da",
+  300: "#7986cb",
+  400: "#5c6bc0",
+  500: "#3f51b5",
+  600: "#3949ab",
+  700: "#303f9f",
+  800: "#283593",
+  900: "#1a237e",
+  A100: "#8c9eff",
+  A200: "#536dfe",
+  A400: "#3d5afe",
+  A700: "#304ffe"
+};
+
+var blue = {
+  50: "#e3f2fd",
+  100: "#bbdefb",
+  200: "#90caf9",
+  300: "#64b5f6",
+  400: "#42a5f5",
+  500: "#2196f3",
+  600: "#1e88e5",
+  700: "#1976d2",
+  800: "#1565c0",
+  900: "#0d47a1",
+  A100: "#82b1ff",
+  A200: "#448aff",
+  A400: "#2979ff",
+  A700: "#2962ff"
+};
+
+var lightBlue = {
+  50: "#e1f5fe",
+  100: "#b3e5fc",
+  200: "#81d4fa",
+  300: "#4fc3f7",
+  400: "#29b6f6",
+  500: "#03a9f4",
+  600: "#039be5",
+  700: "#0288d1",
+  800: "#0277bd",
+  900: "#01579b",
+  A100: "#80d8ff",
+  A200: "#40c4ff",
+  A400: "#00b0ff",
+  A700: "#0091ea"
+};
+
+var cyan = {
+  50: "#e0f7fa",
+  100: "#b2ebf2",
+  200: "#80deea",
+  300: "#4dd0e1",
+  400: "#26c6da",
+  500: "#00bcd4",
+  600: "#00acc1",
+  700: "#0097a7",
+  800: "#00838f",
+  900: "#006064",
+  A100: "#84ffff",
+  A200: "#18ffff",
+  A400: "#00e5ff",
+  A700: "#00b8d4"
+};
+
+var teal = {
+  50: "#e0f2f1",
+  100: "#b2dfdb",
+  200: "#80cbc4",
+  300: "#4db6ac",
+  400: "#26a69a",
+  500: "#009688",
+  600: "#00897b",
+  700: "#00796b",
+  800: "#00695c",
+  900: "#004d40",
+  A100: "#a7ffeb",
+  A200: "#64ffda",
+  A400: "#1de9b6",
+  A700: "#00bfa5"
+};
+
+var green = {
+  50: "#e8f5e9",
+  100: "#c8e6c9",
+  200: "#a5d6a7",
+  300: "#81c784",
+  400: "#66bb6a",
+  500: "#4caf50",
+  600: "#43a047",
+  700: "#388e3c",
+  800: "#2e7d32",
+  900: "#1b5e20",
+  A100: "#b9f6ca",
+  A200: "#69f0ae",
+  A400: "#00e676",
+  A700: "#00c853"
+};
+
+var lightGreen = {
+  50: "#f1f8e9",
+  100: "#dcedc8",
+  200: "#c5e1a5",
+  300: "#aed581",
+  400: "#9ccc65",
+  500: "#8bc34a",
+  600: "#7cb342",
+  700: "#689f38",
+  800: "#558b2f",
+  900: "#33691e",
+  A100: "#ccff90",
+  A200: "#b2ff59",
+  A400: "#76ff03",
+  A700: "#64dd17"
+};
+
+var lime = {
+  50: "#f9fbe7",
+  100: "#f0f4c3",
+  200: "#e6ee9c",
+  300: "#dce775",
+  400: "#d4e157",
+  500: "#cddc39",
+  600: "#c0ca33",
+  700: "#afb42b",
+  800: "#9e9d24",
+  900: "#827717",
+  A100: "#f4ff81",
+  A200: "#eeff41",
+  A400: "#c6ff00",
+  A700: "#aeea00"
+};
+
+var yellow = {
+  50: "#fffde7",
+  100: "#fff9c4",
+  200: "#fff59d",
+  300: "#fff176",
+  400: "#ffee58",
+  500: "#ffeb3b",
+  600: "#fdd835",
+  700: "#fbc02d",
+  800: "#f9a825",
+  900: "#f57f17",
+  A100: "#ffff8d",
+  A200: "#ffff00",
+  A400: "#ffea00",
+  A700: "#ffd600"
+};
+
+var amber = {
+  50: "#fff8e1",
+  100: "#ffecb3",
+  200: "#ffe082",
+  300: "#ffd54f",
+  400: "#ffca28",
+  500: "#ffc107",
+  600: "#ffb300",
+  700: "#ffa000",
+  800: "#ff8f00",
+  900: "#ff6f00",
+  A100: "#ffe57f",
+  A200: "#ffd740",
+  A400: "#ffc400",
+  A700: "#ffab00"
+};
+
+var orange = {
+  50: "#fff3e0",
+  100: "#ffe0b2",
+  200: "#ffcc80",
+  300: "#ffb74d",
+  400: "#ffa726",
+  500: "#ff9800",
+  600: "#fb8c00",
+  700: "#f57c00",
+  800: "#ef6c00",
+  900: "#e65100",
+  A100: "#ffd180",
+  A200: "#ffab40",
+  A400: "#ff9100",
+  A700: "#ff6d00"
+};
+
+var deepOrange = {
+  50: "#fbe9e7",
+  100: "#ffccbc",
+  200: "#ffab91",
+  300: "#ff8a65",
+  400: "#ff7043",
+  500: "#ff5722",
+  600: "#f4511e",
+  700: "#e64a19",
+  800: "#d84315",
+  900: "#bf360c",
+  A100: "#ff9e80",
+  A200: "#ff6e40",
+  A400: "#ff3d00",
+  A700: "#dd2c00"
+};
+
+var brown = {
+  50: "#efebe9",
+  100: "#d7ccc8",
+  200: "#bcaaa4",
+  300: "#a1887f",
+  400: "#8d6e63",
+  500: "#795548",
+  600: "#6d4c41",
+  700: "#5d4037",
+  800: "#4e342e",
+  900: "#3e2723",
+  A100: "#d7ccc8",
+  A200: "#bcaaa4",
+  A400: "#8d6e63",
+  A700: "#5d4037"
+};
+
+var grey = {
+  50: "#fafafa",
+  100: "#f5f5f5",
+  200: "#eeeeee",
+  300: "#e0e0e0",
+  400: "#bdbdbd",
+  500: "#9e9e9e",
+  600: "#757575",
+  700: "#616161",
+  800: "#424242",
+  900: "#212121",
+  A100: "#d5d5d5",
+  A200: "#aaaaaa",
+  A400: "#303030",
+  A700: "#616161"
+};
+
+var blueGrey = {
+  50: "#eceff1",
+  100: "#cfd8dc",
+  200: "#b0bec5",
+  300: "#90a4ae",
+  400: "#78909c",
+  500: "#607d8b",
+  600: "#546e7a",
+  700: "#455a64",
+  800: "#37474f",
+  900: "#263238",
+  A100: "#cfd8dc",
+  A200: "#b0bec5",
+  A400: "#78909c",
+  A700: "#455a64"
+};
+
+var index = /*#__PURE__*/ Object.freeze({
+  __proto__: null,
+  common: common,
+  red: red,
+  pink: pink,
+  purple: purple,
+  deepPurple: deepPurple,
+  indigo: indigo,
+  blue: blue,
+  lightBlue: lightBlue,
+  cyan: cyan,
+  teal: teal,
+  green: green,
+  lightGreen: lightGreen,
+  lime: lime,
+  yellow: yellow,
+  amber: amber,
+  orange: orange,
+  deepOrange: deepOrange,
+  brown: brown,
+  grey: grey,
+  blueGrey: blueGrey
+});
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -2415,87 +2767,37 @@ function zeroArray(arr, length) {
 
 var color = Color;
 
-var common = {
-  black: "#000",
-  white: "#fff"
-};
-
-var red = {
-  50: "#ffebee",
-  100: "#ffcdd2",
-  200: "#ef9a9a",
-  300: "#e57373",
-  400: "#ef5350",
-  500: "#f44336",
-  600: "#e53935",
-  700: "#d32f2f",
-  800: "#c62828",
-  900: "#b71c1c",
-  A100: "#ff8a80",
-  A200: "#ff5252",
-  A400: "#ff1744",
-  A700: "#d50000"
-};
-
-var pink = {
-  50: "#fce4ec",
-  100: "#f8bbd0",
-  200: "#f48fb1",
-  300: "#f06292",
-  400: "#ec407a",
-  500: "#e91e63",
-  600: "#d81b60",
-  700: "#c2185b",
-  800: "#ad1457",
-  900: "#880e4f",
-  A100: "#ff80ab",
-  A200: "#ff4081",
-  A400: "#f50057",
-  A700: "#c51162"
-};
-
-var indigo = {
-  50: "#e8eaf6",
-  100: "#c5cae9",
-  200: "#9fa8da",
-  300: "#7986cb",
-  400: "#5c6bc0",
-  500: "#3f51b5",
-  600: "#3949ab",
-  700: "#303f9f",
-  800: "#283593",
-  900: "#1a237e",
-  A100: "#8c9eff",
-  A200: "#536dfe",
-  A400: "#3d5afe",
-  A700: "#304ffe"
-};
-
-var grey = {
-  50: "#fafafa",
-  100: "#f5f5f5",
-  200: "#eeeeee",
-  300: "#e0e0e0",
-  400: "#bdbdbd",
-  500: "#9e9e9e",
-  600: "#757575",
-  700: "#616161",
-  800: "#424242",
-  900: "#212121",
-  A100: "#d5d5d5",
-  A200: "#aaaaaa",
-  A400: "#303030",
-  A700: "#616161"
-};
-
 var light = {
   text: {
-    primary: "rgba(0, 0, 0, 0.87)",
-    secondary: "rgba(0, 0, 0, 0.54)",
-    disabled: "rgba(0, 0, 0, 0.38)",
-    hint: "rgba(0, 0, 0, 0.38)"
+    dark: {
+      primary: "rgba(0, 0, 0, 0.87)",
+      secondary: "rgba(0, 0, 0, 0.54)",
+      disabled: "rgba(0, 0, 0, 0.38)",
+      hint: "rgba(0, 0, 0, 0.38)"
+    },
+    light: {
+      primary: common.white,
+      secondary: "rgba(255, 255, 255, 0.7)",
+      disabled: "rgba(255, 255, 255, 0.5)",
+      hint: "rgba(255, 255, 255, 0.5)"
+    }
   },
   divider: "rgba(0, 0, 0, 0.12)",
+  overlay: {
+    hover: "rgba(0, 0, 0, 0.08)",
+    focus: "rgba(0, 0, 0, 0.12)",
+    pressed: "rgba(0, 0, 0, 0.16)"
+  },
+  surface: {
+    ui: common.white,
+    card: grey[50],
+    dialogs: common.white,
+    drawers: common.white,
+    sheets: grey[50],
+    sideSheets: common.white,
+    menu: grey[50],
+    snackbar: grey[900]
+  },
   background: {
     paper: common.white,
     default: grey[50]
@@ -2511,16 +2813,38 @@ var light = {
 };
 var dark = {
   text: {
-    primary: common.white,
-    secondary: "rgba(255, 255, 255, 0.7)",
-    disabled: "rgba(255, 255, 255, 0.5)",
-    hint: "rgba(255, 255, 255, 0.5)",
-    icon: "rgba(255, 255, 255, 0.5)"
+    dark: {
+      primary: "rgba(0, 0, 0, 0.87)",
+      secondary: "rgba(0, 0, 0, 0.54)",
+      disabled: "rgba(0, 0, 0, 0.38)",
+      hint: "rgba(0, 0, 0, 0.38)"
+    },
+    light: {
+      primary: common.white,
+      secondary: "rgba(255, 255, 255, 0.7)",
+      disabled: "rgba(255, 255, 255, 0.5)",
+      hint: "rgba(255, 255, 255, 0.5)"
+    }
   },
   divider: "rgba(255, 255, 255, 0.12)",
+  overlay: {
+    hover: "rgba(255, 255, 255, 0.32)",
+    focus: "rgba(255, 255, 255, 0.12)",
+    pressed: "rgba(255, 255, 255, 0.8)"
+  },
+  surface: {
+    ui: grey[800],
+    card: grey.A400,
+    dialogs: grey[800],
+    drawers: grey[800],
+    sheets: grey.A400,
+    sideSheets: grey[800],
+    menu: grey.A400,
+    snackbar: grey[900]
+  },
   background: {
     paper: grey[800],
-    default: "#303030"
+    default: grey.A400
   },
   action: {
     active: common.white,
@@ -2553,7 +2877,8 @@ function createPalette(options) {
         ? {
             light: indigo[300],
             main: indigo[500],
-            dark: indigo[700]
+            dark: indigo[700],
+            palette: indigo
           }
         : _a,
     _b = options.secondary,
@@ -2562,7 +2887,8 @@ function createPalette(options) {
         ? {
             light: pink.A200,
             main: pink.A400,
-            dark: pink.A700
+            dark: pink.A700,
+            palette: pink
           }
         : _b,
     _c = options.error,
@@ -2571,7 +2897,8 @@ function createPalette(options) {
         ? {
             light: red[300],
             main: red[500],
-            dark: red[700]
+            dark: red[700],
+            palette: red
           }
         : _c,
     _d = options.type,
@@ -2590,16 +2917,17 @@ function createPalette(options) {
     ]);
   var getContrastText = function(background) {
     var color$1 = color;
-    return color$1(background).contrast(color$1(dark.text.primary)) >=
+    return color$1(background).contrast(color$1(light.text.dark.primary)) >=
       contrastThreshold
-      ? dark.text.primary
-      : light.text.primary;
+      ? light.text.dark.primary
+      : light.text.light.primary;
   };
   function augmentColor(color, mainShade, lightShade, darkShade) {
     var MainShade = mainShade || 500;
     var LightShade = lightShade || 300;
     var DarkShade = darkShade || 700;
     var main = color.hasOwnProperty("main") ? color.main : color[MainShade];
+    var palette = color.hasOwnProperty("palette") ? color.palette : undefined;
     var _a = getLightAndDark(color, main, [LightShade, DarkShade], tonalOffset),
       lightColor = _a.light,
       darkColor = _a.dark;
@@ -2610,7 +2938,8 @@ function createPalette(options) {
       main: main,
       light: lightColor,
       dark: darkColor,
-      contrastText: contrastText
+      contrastText: contrastText,
+      palette: palette
     };
   }
   var types = { dark: dark, light: light };
@@ -2639,32 +2968,40 @@ var createTypography = function(options) {
     rem = _a === void 0 ? 14 : _a,
     _b = options.allVariants,
     allVariants = _b === void 0 ? {} : _b;
-  var buildVariant = function(em, lineHeight, casing) {
-    var fontSize = rem * em;
-    console.log(lineHeight);
+  var buildVariant = function(
+    size,
+    lineHeight,
+    fontWeight,
+    fontStyle,
+    casing,
+    fontFamily
+  ) {
     return __assign(
       {
-        fontSize: fontSize,
-        // lineHeight: 1, // lineHeight * fontSize,
+        fontFamily: fontFamily,
+        fontStyle: fontStyle,
+        fontWeight: fontWeight,
+        fontSize: rem * size,
+        lineHeight: lineHeight * rem,
         textTransform: casing
       },
       allVariants
     );
   };
   var variants = {
-    h1: buildVariant(2.5714, 1.27),
-    h2: buildVariant(2.2857, 0.8),
-    h3: buildVariant(2.1428, 0.75),
-    h4: buildVariant(1.8571, 0.8125),
-    h5: buildVariant(1.5714, 0.6875),
-    h6: buildVariant(1.2857, 0.75),
-    s1: buildVariant(1.0714, 0.625),
-    s2: buildVariant(0.9285, 0.5416),
-    p1: buildVariant(1.0714, 0.75),
-    p2: buildVariant(0.9285, 0.7222),
-    c1: buildVariant(0.8571, 0.75),
-    c2: buildVariant(0.8571, 0.75),
-    label: buildVariant(0.8571, 0.75, "uppercase")
+    h1: buildVariant(2.5714, 3.4285, "bold", "normal"),
+    h2: buildVariant(2.2857, 2.8571, "bold", "normal"),
+    h3: buildVariant(2.1428, 2.8571, "bold", "normal"),
+    h4: buildVariant(1.8571, 2.2857, "bold", "normal"),
+    h5: buildVariant(1.5714, 2.2857, "bold", "normal"),
+    h6: buildVariant(1.2857, 1.7142, "bold", "normal"),
+    s1: buildVariant(1.0714, 1.7142, "600", "normal"),
+    s2: buildVariant(0.9285, 1.7142, "600", "normal"),
+    p1: buildVariant(1.0714, 1.4285, "normal", "normal"),
+    p2: buildVariant(0.9285, 1.2857, "normal", "normal"),
+    c1: buildVariant(0.8571, 1.1428, "normal", "normal"),
+    c2: buildVariant(0.8571, 1.1428, "600", "normal"),
+    label: buildVariant(0.8571, 1.1428, "bold", "normal", "uppercase")
   };
   return cjs({ rem: rem }, variants);
 };
@@ -2715,92 +3052,83 @@ function createShadow(depth, blur, color) {
     elevation: depth + 1
   };
 }
-var shadows = [
-  createShadow(0, 1),
-  createShadow(1, 2),
-  createShadow(2, 4),
-  createShadow(3, 5),
-  createShadow(4, 8),
-  createShadow(5, 10),
-  createShadow(6, 10),
-  createShadow(7, 10),
-  createShadow(8, 12),
-  createShadow(9, 14),
-  createShadow(10, 15),
-  createShadow(11, 17),
-  createShadow(12, 19),
-  createShadow(13, 21),
-  createShadow(14, 22),
-  createShadow(15, 24),
-  createShadow(16, 26),
-  createShadow(17, 28),
-  createShadow(18, 29),
-  createShadow(19, 31),
-  createShadow(20, 33),
-  createShadow(21, 35),
-  createShadow(22, 36),
-  createShadow(23, 38)
-];
-
-var shape = {
-  borderRadius: 4
+var shadows = {
+  dp0: createShadow(0, 0),
+  dp1: createShadow(0, 1),
+  dp2: createShadow(1, 2),
+  dp3: createShadow(2, 4),
+  dp4: createShadow(3, 5),
+  dp5: createShadow(4, 8),
+  dp6: createShadow(5, 10),
+  dp7: createShadow(6, 10),
+  dp8: createShadow(7, 10),
+  dp9: createShadow(8, 12),
+  dp10: createShadow(9, 14),
+  dp11: createShadow(10, 15),
+  dp12: createShadow(11, 17),
+  dp13: createShadow(12, 19),
+  dp14: createShadow(13, 21),
+  dp15: createShadow(14, 22),
+  dp16: createShadow(15, 24),
+  dp17: createShadow(16, 26),
+  dp18: createShadow(17, 28),
+  dp19: createShadow(18, 29),
+  dp20: createShadow(19, 31),
+  dp21: createShadow(20, 33),
+  dp22: createShadow(21, 35),
+  dp23: createShadow(22, 36),
+  dp24: createShadow(23, 38)
 };
 
-var themeManager;
-(function(themeManager) {
-  function create(themeOptions) {
-    var _a = themeOptions.palette,
-      paletteInput = _a === void 0 ? {} : _a,
-      _b = themeOptions.typography,
-      typographyInput = _b === void 0 ? {} : _b,
-      spacingInput = themeOptions.spacing,
-      shadowsInput = themeOptions.shadows,
-      others = __rest(themeOptions, [
-        "palette",
-        "typography",
-        "spacing",
-        "shadows"
-      ]);
-    var palette = createPalette(paletteInput);
-    var typography = createTypography(typographyInput);
-    var spacing = createSpacing(spacingInput);
-    var shadows$1 = shadowsInput || shadows;
-    return cjs(
-      {
-        palette: palette,
-        typography: typography,
-        spacing: spacing,
-        shadows: shadows$1,
-        shape: shape
-      },
-      __assign({}, others)
+var createTheme = function(options) {
+  var _a = options.palette,
+    paletteInput = _a === void 0 ? {} : _a,
+    _b = options.typography,
+    typographyInput = _b === void 0 ? {} : _b,
+    spacingInput = options.spacing,
+    _c = options.shadows,
+    shadowsInput = _c === void 0 ? {} : _c,
+    others = __rest(options, ["palette", "typography", "spacing", "shadows"]);
+  var palette = createPalette(paletteInput);
+  var typography = createTypography(typographyInput);
+  var spacing = createSpacing(spacingInput);
+  var shadows$1 = Object.keys(shadowsInput).reduce(function(acc, shadowKey) {
+    var _a;
+    var _b = shadowsInput[shadowKey],
+      depth = _b.depth,
+      blur = _b.blur,
+      color = _b.color;
+    return __assign(
+      __assign({}, acc),
+      ((_a = {}), (_a[shadowKey] = createShadow(depth, blur, color)), _a)
     );
-  }
-  themeManager.create = create;
-})(themeManager || (themeManager = {}));
-var themeManager$1 = themeManager;
+  }, shadows);
+  return cjs(
+    {
+      palette: palette,
+      typography: typography,
+      spacing: spacing,
+      shadows: shadows$1
+    },
+    others
+  );
+};
 
-var themeContext;
-(function(themeContext) {
-  themeContext.initialTheme = themeManager$1.create({});
-  themeContext.context = React.createContext(themeContext.initialTheme);
-  themeContext.provider = function(_a) {
-    var children = _a.children,
-      theme = _a.theme;
-    var themeValue = theme
-      ? themeManager$1.create(theme)
-      : themeManager$1.create({});
-    return React.createElement(
-      themeContext.context.Provider,
-      { value: themeValue },
-      children
-    );
-  };
-})(themeContext || (themeContext = {}));
-var themeContext$1 = themeContext;
+var initialTheme = createTheme({});
+var ThemeContext = React.createContext(initialTheme);
+var ThemeProvider = function(_a) {
+  var children = _a.children,
+    theme = _a.theme;
+  var themeValue = theme ? createTheme(theme) : initialTheme;
+  return React.createElement(
+    ThemeContext.Provider,
+    { value: themeValue },
+    children
+  );
+};
 
 var useTheme = function() {
-  return React.useContext(themeContext$1.context);
+  return React.useContext(ThemeContext);
 };
 
 var createStyleSheet = function(styles) {
@@ -2814,35 +3142,17 @@ var createStyleSheet = function(styles) {
     var theme = useTheme();
     return get_Styles(theme, props);
   };
-  var withStyles = function(styles_props) {
-    return function(Component) {
-      return function(props) {
-        var theme = useTheme();
-        return React.createElement(
-          Component,
-          __assign({}, props, { styles: get_Styles(theme, styles_props) })
-        );
-      };
-    };
-  };
-  return { useStyles: useStyles, withStyles: withStyles };
+  return useStyles;
 };
 
-var Context = themeContext$1.context;
-var withTheme = function(Component) {
-  return function(props) {
-    return React.createElement(Context.Consumer, null, function(value) {
-      return React.createElement(
-        Component,
-        __assign({}, props, { theme: value })
-      );
-    });
-  };
-};
-
+exports.ThemeContext = ThemeContext;
+exports.ThemeProvider = ThemeProvider;
+exports.colors = index;
+exports.createShadow = createShadow;
 exports.createStyleSheet = createStyleSheet;
-exports.themeContext = themeContext$1;
-exports.themeManager = themeManager$1;
+exports.createTheme = createTheme;
+exports.dark = dark;
+exports.initialTheme = initialTheme;
+exports.light = light;
 exports.useTheme = useTheme;
-exports.withTheme = withTheme;
 //# sourceMappingURL=index.js.map

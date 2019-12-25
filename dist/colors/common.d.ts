@@ -1,3 +1,3 @@
-import { ICommonColors } from "./types";
-declare const common: ICommonColors;
+import { CommonColors } from "./types";
+declare const common: CommonColors;
 export default common;

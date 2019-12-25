@@ -1,3 +1,3 @@
-import { IColor } from "./types";
-declare const deepPurple: IColor;
+import { Color } from "./types";
+declare const deepPurple: Color;
 export default deepPurple;
