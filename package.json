@@ -1,7 +1,7 @@
 {
   "name": "react-native-styles",
   "title": "React Native Styles",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "react-native-styles Provides a light/dark theme to let your users adjust the appearance of your app depending on the time of day or their preference.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
