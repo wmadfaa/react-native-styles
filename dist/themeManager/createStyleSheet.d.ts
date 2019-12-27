@@ -12,5 +12,5 @@ declare const createStyleSheet: <
   T extends NamedStyles<T> | NamedStyles<any>
 >(
   styles: StylesObject<P, T>
-) => (props: P) => T;
+) => (props: P, overWrite?: StylesObject<P, T>) => T;
 export default createStyleSheet;

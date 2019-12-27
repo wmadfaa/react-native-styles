@@ -3124,15 +3124,21 @@ var useTheme = function() {
 };
 
 var createStyleSheet = function(styles) {
-  var get_Styles = function(theme, props) {
-    if (styles instanceof Function) {
-      return StyleSheet.create(styles(theme, props));
+  var create_Styles = function(stylesObject, theme, props) {
+    if (stylesObject instanceof Function) {
+      return StyleSheet.create(stylesObject(theme, props));
     }
-    return StyleSheet.create(styles);
+    return StyleSheet.create(stylesObject);
   };
-  var useStyles = function(props) {
+  var useStyles = function(props, overWrite) {
+    if (overWrite === void 0) {
+      overWrite = {};
+    }
     var theme = useTheme();
-    return get_Styles(theme, props);
+    return cjs(
+      create_Styles(styles, theme, props),
+      create_Styles(overWrite, theme, props)
+    );
   };
   return useStyles;
 };

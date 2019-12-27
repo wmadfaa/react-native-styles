@@ -2,6 +2,7 @@ import { ViewStyle, TextStyle, ImageStyle, StyleSheet } from "react-native";
 import { Theme } from "./createTheme";
 
 import useTheme from "./useTheme";
+import deepmerge from "deepmerge";
 
 type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
 
@@ -16,16 +17,23 @@ const createStyleSheet = <
 >(
   styles: StylesObject<P, T>
 ) => {
-  const get_Styles = (theme: Theme, props: P): T => {
-    if (styles instanceof Function) {
-      return StyleSheet.create<T>(styles(theme, props));
+  const create_Styles = (
+    stylesObject: StylesObject<P, T>,
+    theme: Theme,
+    props: P
+  ): T => {
+    if (stylesObject instanceof Function) {
+      return StyleSheet.create<T>(stylesObject(theme, props));
     }
-    return StyleSheet.create<T>(styles);
+    return StyleSheet.create<T>(stylesObject);
   };
 
-  const useStyles = (props: P): T => {
+  const useStyles = (props: P, overWrite: StylesObject<P, T> = {} as T): T => {
     const theme = useTheme();
-    return get_Styles(theme, props);
+    return deepmerge(
+      create_Styles(styles, theme, props),
+      create_Styles(overWrite, theme, props)
+    );
   };
 
   return useStyles;
