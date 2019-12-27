@@ -17,22 +17,33 @@ const createStyleSheet = <
 >(
   styles: StylesObject<P, T>
 ) => {
-  const create_Styles = (
-    stylesObject: StylesObject<P, T>,
-    theme: Theme,
-    props: P
-  ): T => {
-    if (stylesObject instanceof Function) {
-      return StyleSheet.create<T>(stylesObject(theme, props));
+  const create_Styles = (theme: Theme, props: P): T => {
+    if (styles instanceof Function) {
+      return StyleSheet.create<T>(styles(theme, props));
     }
-    return StyleSheet.create<T>(stylesObject);
+    return StyleSheet.create<T>(styles);
   };
 
-  const useStyles = (props: P, overWrite: StylesObject<P, T> = {} as T): T => {
+  const create_overwriteStyles = (
+    overWrite: ((theme: Theme, props: P) => Partial<T>) | Partial<T>,
+    theme: Theme,
+    props: P
+  ): Partial<T> => {
+    if (overWrite instanceof Function) {
+      return StyleSheet.create<{}>(overWrite(theme, props));
+    }
+    return StyleSheet.create<{}>(overWrite);
+  };
+
+  const useStyles = (
+    props: P,
+    overWrite: ((theme: Theme, props: P) => Partial<T>) | Partial<T> = {}
+  ): T => {
     const theme = useTheme();
+
     return deepmerge(
-      create_Styles(styles, theme, props),
-      create_Styles(overWrite, theme, props)
+      create_Styles(theme, props),
+      create_overwriteStyles(overWrite, theme, props)
     );
   };
 
