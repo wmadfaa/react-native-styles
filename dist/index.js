@@ -3132,11 +3132,17 @@ var useTheme = function() {
 };
 
 var createStyleSheet = function(styles) {
-  var create_Styles = function(stylesObject, theme, props) {
-    if (stylesObject instanceof Function) {
-      return reactNative.StyleSheet.create(stylesObject(theme, props));
+  var create_Styles = function(theme, props) {
+    if (styles instanceof Function) {
+      return reactNative.StyleSheet.create(styles(theme, props));
     }
-    return reactNative.StyleSheet.create(stylesObject);
+    return reactNative.StyleSheet.create(styles);
+  };
+  var create_overwriteStyles = function(overWrite, theme, props) {
+    if (overWrite instanceof Function) {
+      return reactNative.StyleSheet.create(overWrite(theme, props));
+    }
+    return reactNative.StyleSheet.create(overWrite);
   };
   var useStyles = function(props, overWrite) {
     if (overWrite === void 0) {
@@ -3144,8 +3150,8 @@ var createStyleSheet = function(styles) {
     }
     var theme = useTheme();
     return cjs(
-      create_Styles(styles, theme, props),
-      create_Styles(overWrite, theme, props)
+      create_Styles(theme, props),
+      create_overwriteStyles(overWrite, theme, props)
     );
   };
   return useStyles;
